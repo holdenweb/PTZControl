@@ -37,7 +37,8 @@ for port, desc, hwid in sorted(ports):
 
 # get the port from user
 port = input("Enter the port number: ")
-ser = serial.Serial("COM"+port, 9600)  # change the second argument to your baud rate
+ser = serial.Serial("/dev/ttyUSB0", 9600)  # Trying to make this work!
+# ser = serial.Serial("COM"+port, 9600)  # change the second argument to your baud rate
 if ser.isOpen():
     print("Port status: Serial port is open and connected!")
 else:

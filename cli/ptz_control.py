@@ -2,7 +2,7 @@
 # Software control of a Pelco-D PTZ camera using Python
 
 import serial
-from serial.tools import list_ports
+#from serial.tools import list_ports
 import keyboard
 import time
 
@@ -41,16 +41,16 @@ print("==================================")
 print("Please select the serial port:")
 
 # Display the available serial ports
-ports = list_ports.comports()
-for port, desc, hwid in sorted(ports):
-    print("{}: {}".format(port, desc))
+#ports = list_ports.comports()
+#for port, desc, hwid in sorted(ports):
+#    print("{}: {}".format(port, desc))
 
 # Open the selected serial port
-#ser = serial.Serial('COM17', 9600)  # change the second argument to your baud rate
+ser = serial.Serial('/dev/ttyUSB0', 9600)  # change the second argument to your baud rate
 
 # get the port from user
-port = input("Enter the port number: ")
-ser = serial.Serial("COM"+port, 9600)  # change the second argument to your baud rate
+#port = input("Enter the port number: ")
+#ser = serial.Serial("COM"+port, 9600)  # change the second argument to your baud rate
 if ser.isOpen():
     print("Port status: Serial port is open and connected!")
 else:
@@ -195,7 +195,7 @@ while True:
             send_enter(None)
         else:
             ser.write(''.encode())  # send '' over the serial port
-            print('\r I am not moving!   ', end='', flush=True)
+#            print('\r I am not moving!   ', end='', flush=True)
         
         time.sleep(0.3) # sleep for 0.3 seconds RULE!
 
